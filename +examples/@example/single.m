@@ -1,3 +1,3 @@
  function [ value ] = single(obj)
-   value = double(obj.value);
+   value = single(obj.value);
  end
