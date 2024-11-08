@@ -3,7 +3,10 @@ classdef example < handle & matlab.mixin.CustomDisplay & matlab.mixin.CustomComp
     value (:,:) {mustBeNumeric}
   end
   methods % Constructor
-    function obj = example( varargin )
+    function obj = example( value )
+      arguments
+        value (:,:) {mustBeNumeric}
+      end
     end
   end
   methods % Destructor
