@@ -14,6 +14,10 @@ classdef example < handle & matlab.mixin.CustomDisplay & matlab.mixin.CustomComp
     end
   end
   methods
+    [ bin ] = dec2bin(obj)
+    [ hex ] = dec2hex(obj)
+  end
+  methods
     [ value ] = double(obj)
     [ value ] = single(obj)
     
