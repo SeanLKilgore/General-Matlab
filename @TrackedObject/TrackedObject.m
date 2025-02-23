@@ -82,7 +82,7 @@ classdef TrackedObject < handle & dynamicprops
             
             mcBase = meta.class.fromName('TrackedObject');
             OverallCreationListener = addlistener(mcBase,'InstanceCreated',@TrackedObject.TriggerOnCreation);
-            CL = HandledList;
+            CL = HandledStruct;
             CL.TrackedObject =  OverallCreationListener;
         end
     end
