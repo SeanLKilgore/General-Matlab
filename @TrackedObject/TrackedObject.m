@@ -16,7 +16,7 @@ classdef TrackedObject < handle & dynamicprops
         TrackedObjectList (1,1) HandledStruct = HandledStruct
         CreationListeners (1,1) HandledStruct = TrackedObject.GenerateCreationListener
     end
-    properties (SetAccess=protected)
+    properties (Hidden)
         ObjectID
     end
     methods

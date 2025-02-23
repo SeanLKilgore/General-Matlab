@@ -16,17 +16,19 @@ function varargout = TriggerOnCreation( ~ , evt )
 % Get the metaclass of the (possibly) subclassed object
 mc = metaclass( evt.Instance );
 
+Name = regexprep( mc.Name , '[^a-zA-z0-9]+','_');
+
 TrackedObjectList = TrackedObject.TrackedObjectList;
 
-if ~isprop( TrackedObjectList , mc.Name)
+if ~isprop( TrackedObjectList , Name)
     % Create a new property
-    TrackedObjectList.(mc.Name).Objects   = evt.Instance;
+    TrackedObjectList.(Name).Objects   = evt.Instance;
     evt.Instance.ObjectID = 0;
-    TrackedObjectList.(mc.Name).ObjectIDs = 0;
+    TrackedObjectList.(Name).ObjectIDs = 0;
 else
     % Add to an existing property
-    TrackedObjectList.(mc.Name).Objects   = [ TrackedObjectList.(mc.Name).Objects evt.Instance ];
+    TrackedObjectList.(Name).Objects   = [ TrackedObjectList.(Name).Objects evt.Instance ];
     evt.Instance.ObjectID = 1+max(TrackedObjectList.(mc.Name).ObjectIDs);
-    TrackedObjectList.(mc.Name).ObjectIDs = [ TrackedObjectList.(mc.Name).ObjectIDs evt.Instance.ObjectID ];
+    TrackedObjectList.(Name).ObjectIDs = [ TrackedObjectList.(Name).ObjectIDs evt.Instance.ObjectID ];
 end
 end

@@ -7,10 +7,12 @@ function delete(obj)
 % List of all the objects created by this class
 HL = TrackedObject.TrackedObjectList;
 
+Name = regexprep( class(obj) , '[^a-zA-z0-9]+','_');
+
 % Specifically the list of objects that are the same as the input object
 %
 % At this point, we're no longer working with the list as a pointer
-SubclassList = HL.(class(obj));
+SubclassList = HL.(Name);
 
 % Locate the specific object in the list by its ID
 idx = find( SubclassList.ObjectIDs == obj.ObjectID );
