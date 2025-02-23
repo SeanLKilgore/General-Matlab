@@ -28,7 +28,7 @@ if ~isprop( TrackedObjectList , Name)
 else
     % Add to an existing property
     TrackedObjectList.(Name).Objects   = [ TrackedObjectList.(Name).Objects evt.Instance ];
-    evt.Instance.ObjectID = 1+max(TrackedObjectList.(mc.Name).ObjectIDs);
+    evt.Instance.ObjectID = 1+max(TrackedObjectList.(Name).ObjectIDs);
     TrackedObjectList.(Name).ObjectIDs = [ TrackedObjectList.(Name).ObjectIDs evt.Instance.ObjectID ];
 end
 end
