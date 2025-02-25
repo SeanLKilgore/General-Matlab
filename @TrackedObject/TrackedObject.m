@@ -11,7 +11,7 @@
 % Sean Kilgore 2/22/2024
 
 classdef TrackedObject < handle & dynamicprops
-    properties (Constant,SetAccess=protected,GetAccess=protected)
+    properties (Constant,GetAccess=protected)
         %TrackedObjectList is a constant pointer with a property for each 
         TrackedObjectList (1,1) HandledStruct = HandledStruct
         CreationListeners (1,1) HandledStruct = TrackedObject.GenerateCreationListener
@@ -30,12 +30,6 @@ classdef TrackedObject < handle & dynamicprops
             field = TrackedObject.ClassToName(obj);
             value = obj.TrackedObjectList.(field);
         end
-        function obj = set.List(obj,value)
-            
-        end
-    end
-    methods (Access=protected)
-        
     end
     methods (Static,Access=protected)
         Name = ClassToName(obj)
