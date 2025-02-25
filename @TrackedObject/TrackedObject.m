@@ -16,13 +16,29 @@ classdef TrackedObject < handle & dynamicprops
         TrackedObjectList (1,1) HandledStruct = HandledStruct
         CreationListeners (1,1) HandledStruct = TrackedObject.GenerateCreationListener
     end
+    properties (Dependent)
+        List
+    end
     properties (Hidden)
         ObjectID
     end
     methods
         delete(obj)
     end
+    methods
+        function value = get.List(obj)
+            field = TrackedObject.ClassToName(obj);
+            value = obj.TrackedObjectList.(field);
+        end
+        function obj = set.List(obj,value)
+            
+        end
+    end
+    methods (Access=protected)
+        
+    end
     methods (Static,Access=protected)
+        Name = ClassToName(obj)
         CL = GenerateCreationListener( ~ )
         varargout = TriggerOnCreation( ~ , evt )
     end
