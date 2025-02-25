@@ -11,5 +11,15 @@ classdef HandledStruct < handle & dynamicprops & matlab.mixin.SetGet
     methods
         obj = subsasgn(obj , sbs , value )
     end
+    methods
+        function obj = HandledStruct(varargin)
+            if numel(varargin) > 1
+                fields = fieldnames(varargin{1});
+                for ix = 1:numel(fields)
+                    field = fields{ix};
+                    obj = subsasgn( obj, substruct('.',field) , varargin{1}.(field));
+                end
+            end
+        end
+    end
 end
-    
