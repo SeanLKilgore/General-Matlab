@@ -22,7 +22,7 @@ Name = TrackedObject.ClassToName(mc.Name);
 TrackedObjectList = TrackedObject.TrackedObjectList;
 
 if ~isprop( TrackedObjectList , Name)
-    TrackedObjectList.(Name) = HandledObject;
+    TrackedObjectList.(Name) = HandledStruct;
     % Create a new property
     TrackedObjectList.(Name).Objects   = evt.Instance;
     evt.Instance.ObjectID = 0;
